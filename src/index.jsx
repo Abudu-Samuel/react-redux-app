@@ -1,8 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './components/App';
+import { render } from 'react-dom';
 import '../public/index.css';
+import Routes from './route';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+render(
+  <div className="container"><Routes /></div>, document.getElementById('root')
+);
 
 if (module.hot) module.hot.accept();

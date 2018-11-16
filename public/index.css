@@ -1,3 +1,18 @@
-body {
-  background-color: aqua
+#app {
+  /* font: 10px; */
+  min-width: 550px;
+  min-height: 850px;
+  margin: 0 auto;
+}
+
+a.active {
+  color: orange;
+}
+
+nav {
+  padding-top: 20px
+}
+
+.nav {
+  padding-right: 40px
 }
