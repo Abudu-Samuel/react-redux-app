@@ -48,6 +48,7 @@ export const loadCourses = (offset = 1, limit = 2) => (dispatch) => {
 
 export const saveCourse = course => (dispatch) => {
   dispatch(savingCourseLoader(true));
+  dispatch(fetchInProgress(true));
   return courseApi.saveCourse(course).then((savedCourse) => {
     if (course.id) {
       dispatch(updateCourseSuccess(savedCourse));
@@ -57,6 +58,7 @@ export const saveCourse = course => (dispatch) => {
       toast.success('Course is added successfully');
     }
     dispatch(savingCourseLoader(false));
+    dispatch(fetchInProgress(false));
   }).catch((error) => {
     dispatch(savingCourseLoader(false));
     throw (error);

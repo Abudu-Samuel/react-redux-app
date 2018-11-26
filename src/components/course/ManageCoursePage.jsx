@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import * as actions from '../../actions/courseActions';
 import CourseForm from './CourseForm';
 import validateInput from '../../helper/validation';
+import NotFoundPage from '../common/NotFoundPage';
 
 class ManageCoursePage extends Component {
   state = {
@@ -13,14 +14,19 @@ class ManageCoursePage extends Component {
     title: '',
     category: '',
     authorId: '',
-    length: ''
+    length: '',
+    noEdit: false
   }
 
   componentWillReceiveProps = (nextProps) => {
-    if (this.props.course.id !== nextProps.course.id) {
-      this.setState({
-        course: nextProps.course
-      });
+    if (nextProps.course) {
+      if (this.props.course.id !== nextProps.course.id) {
+        return this.setState({
+          ...nextProps.course
+        });
+      }
+    } else {
+      this.setState({ noEdit: true });
     }
   }
 
@@ -52,7 +58,8 @@ class ManageCoursePage extends Component {
     const validateErrors = validateInput({
       ...this.state,
       title: this.state.title.split(' ').join(''),
-      authorId: this.state.authorId.split(' ').join('')
+      authorId: this.state.authorId.split(' ').join(''),
+      category: this.state.category.split(' ').join('')
     });
     if (Object.keys(validateErrors).length > 0) {
       this.setState({ errors: validateErrors });
@@ -66,8 +73,13 @@ class ManageCoursePage extends Component {
   }
 
   render() {
-    const { errors } = this.state;
-    const { authors, isSaving, course } = this.props;
+    const { errors, noEdit } = this.state;
+    const { authors, isSaving, isFetching, course, match } = this.props;
+
+    if (noEdit) {
+      return <NotFoundPage />;
+    }
+
     return (
       <div>
         <h1>Manage course</h1>
@@ -86,7 +98,7 @@ class ManageCoursePage extends Component {
 }
 
 ManageCoursePage.propTypes = {
-  course: PropTypes.object.isRequired,
+  course: PropTypes.object,
   authors: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
@@ -119,7 +131,8 @@ const mapStateToProps = (state, ownProps) => {
   return {
     course,
     authors: authorsFormattedForDropdown,
-    isSaving: state.courses.isSaving
+    isSaving: state.courses.isSaving,
+    isFetching: state.courses.isFetching
   };
 };
 

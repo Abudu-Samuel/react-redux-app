@@ -17,7 +17,7 @@ export default () => (
         <Route exact path="/courses" component={CoursesPages} />
         <Route exact path="/course" component={ManageCoursePage} />
         <Route exact path="/course/:id" component={ManageCoursePage} />
-        <Route excat component={NotFoundPage} />
+        <Route exact component={NotFoundPage} />
       </Switch>
     </Fragment>
   </Router>
