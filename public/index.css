@@ -16,3 +16,20 @@ nav {
 .nav {
   padding-right: 40px
 }
+
+.fa {
+  font-size: 60px;
+  color: red
+
+}
+
+li {
+  list-style: none;
+  display: inline-flex;
+  margin-right: 10px;
+  text-align: center
+ }
+
+ ul {
+   text-align: center
+ }

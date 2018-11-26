@@ -4,21 +4,41 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
+const prodEntryPoint = path.resolve(__dirname, './src/index.jsx');
+const devEntryPoint = [
+  'react-dev-utils/webpackHotDevClient', prodEntryPoint
+];
+
+const prodLoader = [MiniCssExtractPlugin.loader, 'css-loader'];
+const styleLoader = (
+  process.env.NODE_ENV !== 'production' ? ['css-hot-loader', ...prodLoader] : prodLoader
+);
+
+const htmlPlugin = new HtmlWebPackPlugin({
+  template: './public/index.html',
+  filename: 'index.html',
+  inject: 'body'
+});
+
+
 module.exports = (env, argv) => ({
-  entry: [
-    'react-dev-utils/webpackHotDevClient',
-    path.resolve(__dirname, './src/index.jsx')
-  ],
+  devtool: argv.mode === 'production' ? 'source-map' : 'cheap-module-eval-source-map',
+  entry: argv.mode === 'production' ? prodEntryPoint : devEntryPoint,
   output: {
-    path: path.resolve(__dirname, './build'),
+    path: path.resolve(__dirname, './dist'),
     filename: '[name].[hash].js'
   },
   devServer: {
-    contentBase: path.join(__dirname, 'public'),
+    contentBase: path.join(__dirname, 'dist'),
     compress: true,
-    hot: true,
     overlay: true,
-    historyApiFallback: true
+    hot: argv.mode === 'production' ? false : true,
+    noInfo: true,
+    historyApiFallback: true,
+    port: 8000,
+    proxy: {
+      '/api': 'http://localhost:9000'
+    }
   },
   module: {
     rules: [
@@ -34,14 +54,7 @@ module.exports = (env, argv) => ({
       },
       {
         test: /\.(css|scss)$/,
-        include: [
-          path.resolve(__dirname, 'public')
-        ],
-        use: [
-          'css-hot-loader',
-          MiniCssExtractPlugin.loader,
-          'css-loader'
-        ]
+        use: styleLoader
       },
       {
         test: /\.html$/,
@@ -55,7 +68,7 @@ module.exports = (env, argv) => ({
         test: /\.(png|jpg|gif|woff|woff2|eot|ttf|otf|svg)$/,
         use: [
           {
-            loader: 'file-loader'
+            loader: 'file-loader?name=fonts/[name].[ext]'
           }
         ]
       }
@@ -69,14 +82,11 @@ module.exports = (env, argv) => ({
     extensions: ['.js', '.json', '.jsx', '.css', '.scss']
   },
   plugins: [
-    new CleanWebpackPlugin('build', {}),
-    new webpack.HotModuleReplacementPlugin(),
-    new HtmlWebPackPlugin({
-      template: './public/index.html',
-      filename: './index.html'
-    }),
+    new CleanWebpackPlugin('dist', {}),
+    argv.mode !== 'production' ? new webpack.HotModuleReplacementPlugin() : () => {},
+    htmlPlugin,
     new MiniCssExtractPlugin({
-      filename: argv.mode === 'production' ? 'stlye.[hash].css' : '[name].css',
+      filename: argv.mode === 'production' ? 'style.[hash].css' : '[name].css',
       chunkFilename: 'style.[id].css'
     })
   ]
