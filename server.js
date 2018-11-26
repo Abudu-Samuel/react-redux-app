@@ -9,11 +9,15 @@ const port = process.env.PORT || 9000;
 app.use(compression());
 app.use(express.static('dist'));
 
-app.use('/api', (req, res) => {
+app.get('/api', (req, res) => {
   res.json({ message: 'Redirecting to the production api' });
 });
 
-app.use('*', (req, res) => {
+app.all('/api*', (req, res) => {
+  res.json({ message: 'You got lost in space' });
+});
+
+app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, './index.html'));
 });
 

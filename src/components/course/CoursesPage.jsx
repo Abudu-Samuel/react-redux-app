@@ -8,14 +8,14 @@ class CoursesPage extends Component {
   componentDidMount() {
     this.props.loadCourses();
   }
-
-  componentDidUpdate() {
+ 
+  componentDidUpdate(prevProps) {
     const { totalCourses, currentPage, courses, loadCourses } = this.props;
     if (courses.length === 0 && currentPage > 1) {
-      loadCourses(currentPage - 1);
+      return loadCourses(currentPage - 1);
     }
     if (courses.length === 0 && currentPage === 1) {
-      loadCourses(currentPage);
+      return loadCourses(currentPage);
     }
   }
 
