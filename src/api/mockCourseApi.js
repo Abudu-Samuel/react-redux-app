@@ -4,7 +4,7 @@ import delay from './delay';
 // This file mocks a web API by working with the hard-coded data below.
 // It uses setTimeout to simulate the delay of an AJAX call.
 // All calls return promises.
-const courses = [
+export const courses = [
   {
     id: "react-flux-building-applications",
     title: "Building Applications in React and Flux",
@@ -47,7 +47,7 @@ const courses = [
   }
 ];
 
-function replaceAll(str, find, replace) {
+export function replaceAll(str, find, replace) {
   return str.replace(new RegExp(find, 'g'), replace);
 }
 
@@ -81,7 +81,7 @@ class CourseApi {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         // Simulate server-side validation
-        const minCourseTitleLength = 1;
+        const minCourseTitleLength = 5;
         if (course.title.length < minCourseTitleLength) {
           reject(`Title must be at least ${minCourseTitleLength} characters.`);
         }

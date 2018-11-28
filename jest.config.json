@@ -1,0 +1,14 @@
+{
+  "verbose": true,
+  "collectCoverage": true,
+  "collectCoverageFrom": [
+    "src/reducers/*.{js,jsx}",
+    "src/actions/*.{js,jsx}",
+    "!<rootDir>/node_modules/",
+    "!<rootDir>/src/api/*",
+    "!<rootDir>/src/store/*",
+    "!<rootDir>/src/tests/**/*",
+    "!src/Index.jsx"
+  ],
+  "coverageReporters": ["json", "lcov", "text"]
+ }
