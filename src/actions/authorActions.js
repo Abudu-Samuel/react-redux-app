@@ -7,9 +7,7 @@ export const loadAuthorSuccess = authors => ({
 });
 
 export const loadAuthors = () => (dispatch) => {
-  authorApi.getAllAuthors().then((authors) => {
+  return authorApi.getAllAuthors().then((authors) => {
     dispatch(loadAuthorSuccess(authors));
-  }).catch((error) => {
-    throw (error);
   });
 };

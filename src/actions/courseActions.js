@@ -37,12 +37,10 @@ export const deleteCourseSuccess = course => ({
 
 export const loadCourses = (offset = 1, limit = 2) => (dispatch) => {
   dispatch(fetchInProgress(true));
-  courseApi.getAllCourses(offset, limit)
+  return courseApi.getAllCourses(offset, limit)
     .then((courses) => {
       dispatch(loadCoursesSuccess(courses));
       dispatch(fetchInProgress(false));
-    }).catch((error) => {
-      throw (error);
     });
 };
 
@@ -61,14 +59,10 @@ export const saveCourse = course => (dispatch) => {
     dispatch(fetchInProgress(false));
   }).catch((error) => {
     dispatch(savingCourseLoader(false));
-    throw (error);
   });
 };
 
 export const deleteCourse = course => (dispatch) => {
-  courseApi.deleteCourse(course)
-    .then(() => dispatch(deleteCourseSuccess(course)))
-    .catch((error) => {
-      throw (error);
-    });
+  return courseApi.deleteCourse(course)
+    .then(() => dispatch(deleteCourseSuccess(course)));
 };
