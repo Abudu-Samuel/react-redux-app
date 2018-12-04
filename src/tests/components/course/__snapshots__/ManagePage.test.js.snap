@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders properly render ManageCoursePage component 1`] = `
+<div>
+  <h1>
+    Manage course
+  </h1>
+  <CourseForm
+    allAuthors={
+      Array [
+        Object {},
+      ]
+    }
+    course={
+      Object {
+        "authorId": "",
+        "category": "",
+        "errors": Object {},
+        "length": "",
+        "noEdit": false,
+        "title": "",
+      }
+    }
+    courseToModify={
+      Array [
+        Object {},
+      ]
+    }
+    errors={Object {}}
+    isSaving={false}
+    onChange={[Function]}
+    onSave={[Function]}
+  />
+</div>
+`;

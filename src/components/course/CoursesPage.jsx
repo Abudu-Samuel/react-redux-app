@@ -4,11 +4,11 @@ import Loader from 'react-md-spinner';
 import CourseList from './CourseList';
 import { deleteCourse, loadCourses } from '../../actions/courseActions';
 
-class CoursesPage extends Component {
+export class CoursesPage extends Component {
   componentDidMount() {
     this.props.loadCourses();
   }
- 
+
   componentDidUpdate(prevProps) {
     const { totalCourses, currentPage, courses, loadCourses } = this.props;
     if (courses.length === 0 && currentPage > 1) {

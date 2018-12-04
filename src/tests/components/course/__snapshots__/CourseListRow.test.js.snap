@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CourseListRow /> should render CourseListRow component properly 1`] = `
+<MemoryRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "canGo": [Function],
+        "createHref": [Function],
+        "entries": Array [
+          Object {
+            "hash": "",
+            "key": "g17lhw",
+            "pathname": "/",
+            "search": "",
+            "state": undefined,
+          },
+        ],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "index": 0,
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "key": "g17lhw",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <CourseListRow
+      course=""
+      handleDelete={[MockFunction]}
+    >
+      <tr>
+        <td>
+          <a>
+            Watch
+          </a>
+        </td>
+        <td>
+          <Link
+            replace={false}
+            to="/course/undefined"
+          >
+            <a
+              href="/course/undefined"
+              onClick={[Function]}
+            />
+          </Link>
+        </td>
+        <td />
+        <td />
+        <td>
+          0
+        </td>
+        <td>
+          <button
+            className="btn-danger"
+            onClick={[Function]}
+            type="button"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    </CourseListRow>
+  </Router>
+</MemoryRouter>
+`;

@@ -27,7 +27,6 @@ const CourseList = ({
                 {
             courses.map(course => (
               <CourseListRow key={course.id} course={course} handleDelete={handleDelete} />
-
             ))
           }
               </tbody>
@@ -38,7 +37,7 @@ const CourseList = ({
         onPageChange={event => handlePageChange(event)}
         marginPagesDisplayed={1}
         initialPage={currentPage - 1}
-        disableInitialCallback={true}
+        disableInitialCallback
       />
             {' '}
 

@@ -135,10 +135,10 @@ describe('Course actions tests', () => {
 
   describe('Delete course', () => {
     it('should delete course', (done) => {
-      const action = {
+      const action = [{
         type: types.DELETE_COURSE_SUCCESS,
         course: courses[0].id
-      };
+      }];
 
       const store = storeMock({});
       store.dispatch(actions.deleteCourse(courses[0].id))
