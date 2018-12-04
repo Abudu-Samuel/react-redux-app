@@ -8,7 +8,7 @@ import CourseForm from './CourseForm';
 import validateInput from '../../helper/validation';
 import NotFoundPage from '../common/NotFoundPage';
 
-class ManageCoursePage extends Component {
+export class ManageCoursePage extends Component {
   state = {
     errors: {},
     title: '',
@@ -16,18 +16,6 @@ class ManageCoursePage extends Component {
     authorId: '',
     length: '',
     noEdit: false
-  }
-
-  componentWillReceiveProps = (nextProps) => {
-    if (nextProps.course) {
-      if (this.props.course.id !== nextProps.course.id) {
-        return this.setState({
-          ...nextProps.course
-        });
-      }
-    } else {
-      this.setState({ noEdit: true });
-    }
   }
 
   updateCourseState = (event) => {

@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header /> render Header component 1`] = `
+<nav>
+  <Link
+    className="active"
+    replace={false}
+    to="/"
+  >
+    Home
+  </Link>
+   | 
+  <Link
+    className="active"
+    replace={false}
+    to="/courses"
+  >
+    Courses
+  </Link>
+   | 
+  <Link
+    className="active"
+    replace={false}
+    to="/about"
+  >
+    About
+  </Link>
+</nav>
+`;

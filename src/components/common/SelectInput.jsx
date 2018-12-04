@@ -9,11 +9,11 @@ const SelectInput = ({
     <label htmlFor={name}>{label}</label>
     <div className="field">
       <select
-        name={name}
-        className="form-control"
-        onChange={onChange}
-        defaultValue={defaultValue}
-      >
+          name={name}
+          className="form-control"
+          onChange={onChange}
+          defaultValue={defaultValue}
+        >
         <option value="">{defaultOption}</option>
         {options.map(option => <option key={option.value} value={option.value}>{option.text}</option>)}
       </select>
@@ -22,12 +22,13 @@ const SelectInput = ({
   </div>
 );
 
+
 SelectInput.propTypes = {
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   defaultOption: PropTypes.string.isRequired,
-  defaultValue: PropTypes.string.isRequired,
+  defaultValue: PropTypes.string,
   error: PropTypes.string,
   options: PropTypes.arrayOf(PropTypes.object).isRequired
 };

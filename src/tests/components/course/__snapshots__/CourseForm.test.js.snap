@@ -1,0 +1,150 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CourseForm /> should renderCourseForm component 1`] = `
+<CourseForm
+  allAuthors={
+    Array [
+      Object {},
+    ]
+  }
+  courseToModify={
+    Array [
+      Object {},
+    ]
+  }
+  errors={Object {}}
+  isSaving={false}
+  onChange={[MockFunction]}
+  onSave={[MockFunction]}
+>
+  <form>
+    <TextInput
+      label="Title"
+      name="title"
+      onChange={[MockFunction]}
+      placeholder="Title"
+    >
+      <div
+        className="form-group"
+      >
+        <label
+          htmlFor="title"
+        >
+          Title
+        </label>
+        <div
+          className="field"
+        >
+          <input
+            className="form-control"
+            name="title"
+            onChange={[MockFunction]}
+            placeholder="Title"
+            type="text"
+          />
+        </div>
+      </div>
+    </TextInput>
+    <SelectInput
+      defaultOption="Select Author"
+      label="Author"
+      name="authorId"
+      onChange={[MockFunction]}
+      options={
+        Array [
+          Object {},
+        ]
+      }
+    >
+      <div
+        className="form-group"
+      >
+        <label
+          htmlFor="authorId"
+        >
+          Author
+        </label>
+        <div
+          className="field"
+        >
+          <select
+            className="form-control"
+            name="authorId"
+            onChange={[MockFunction]}
+          >
+            <option
+              value=""
+            >
+              Select Author
+            </option>
+            <option />
+          </select>
+        </div>
+      </div>
+    </SelectInput>
+    <TextInput
+      label="Category"
+      name="category"
+      onChange={[MockFunction]}
+      placeholder="Category"
+    >
+      <div
+        className="form-group"
+      >
+        <label
+          htmlFor="category"
+        >
+          Category
+        </label>
+        <div
+          className="field"
+        >
+          <input
+            className="form-control"
+            name="category"
+            onChange={[MockFunction]}
+            placeholder="Category"
+            type="text"
+          />
+        </div>
+      </div>
+    </TextInput>
+    <TextInput
+      defaultValue={1}
+      label="Length"
+      name="length"
+      onChange={[MockFunction]}
+      placeholder="Length"
+    >
+      <div
+        className="form-group"
+      >
+        <label
+          htmlFor="length"
+        >
+          Length
+        </label>
+        <div
+          className="field"
+        >
+          <input
+            className="form-control"
+            defaultValue={1}
+            name="length"
+            onChange={[MockFunction]}
+            placeholder="Length"
+            type="text"
+          />
+        </div>
+      </div>
+    </TextInput>
+    <input
+      className="btn btn-sm btn-primary"
+      defaultValue="Save"
+      disabled={false}
+      name="submit"
+      onClick={[MockFunction]}
+    />
+  </form>
+</CourseForm>
+`;

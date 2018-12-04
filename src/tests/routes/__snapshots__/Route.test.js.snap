@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Routes /> render routes in the app 1`] = `
+<BrowserRouter>
+  <Header />
+  <Switch>
+    <Route
+      component={[Function]}
+      exact={true}
+      path="/"
+    />
+    <Route
+      component={[Function]}
+      exact={true}
+      path="/about"
+    />
+    <Route
+      component={[Function]}
+      exact={true}
+      path="/courses"
+    />
+    <Route
+      component={[Function]}
+      exact={true}
+      path="/course"
+    />
+    <Route
+      component={[Function]}
+      exact={true}
+      path="/course/:id"
+    />
+    <Route
+      component={[Function]}
+      exact={true}
+    />
+  </Switch>
+</BrowserRouter>
+`;
